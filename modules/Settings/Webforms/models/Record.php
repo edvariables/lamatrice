@@ -373,7 +373,7 @@ class Settings_Webforms_Record_Model extends Settings_Vtiger_Record_Model {
 		return false;
 	}
 
-	public function getDisplayValue($fieldName) {
+	public function getDisplayValue($fieldName, $record = false, $recordInstance = false) {
 		if(is_a($fieldName, "Vtiger_Field_Model")){
 			$fieldModel = $fieldName;
 			$fieldName = $fieldModel->getName();
@@ -382,6 +382,6 @@ class Settings_Webforms_Record_Model extends Settings_Vtiger_Record_Model {
 			$fields = $this->getModule()->getFields();
 			$fieldModel = $fields[$key];
 		}
-		return $fieldModel->getDisplayValue($this->get($key));
+		return $fieldModel->getDisplayValue($this->get($key), $record, $recordInstance);
 	}
 }

@@ -27,7 +27,7 @@ abstract class Settings_Vtiger_Record_Model extends Vtiger_Base_Model {
 		return $links;
 	}
 	
-	public function getDisplayValue($key) {
+	public function getDisplayValue($key, $record = false, $recordInstance = false) {
 		if(is_a($key, "Vtiger_Field_Model"))
 			$key = $key->getName();
 		return $this->get($key);

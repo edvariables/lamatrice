@@ -36,7 +36,7 @@ class ListViewSession {
 		$this->start =1;
 	}
 
-	function getCurrentPage($currentModule,$viewId){
+	static function getCurrentPage($currentModule,$viewId){
 		if(!empty($_SESSION['lvs'][$currentModule][$viewId]['start'])){
 			return $_SESSION['lvs'][$currentModule][$viewId]['start'];
 		}
@@ -55,7 +55,7 @@ class ListViewSession {
 		return $start;
 	}
 
-	function getListViewNavigation($currentRecordId){
+	static function getListViewNavigation($currentRecordId){
 		global $currentModule,$current_user,$adb,$log,$list_max_entries_per_page;
 		Zend_Json::$useBuiltinEncoderDecoder = true;
 		$reUseData = false;

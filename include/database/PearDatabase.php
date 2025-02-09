@@ -791,7 +791,7 @@ class PearDatabase{
     function getNextRow(&$result, $encode=true){
 		global $log;
 		$log->info('getNextRow');
-		if(isset($result)){
+		if(isset($result) && $result){
 	    	$row = $this->change_key_case($result->FetchRow());
 		    if($row && $encode && is_array($row))
 				return array_map('to_html', $row);

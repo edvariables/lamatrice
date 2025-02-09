@@ -31,7 +31,7 @@ class Vtiger_Reminder_UIType extends Vtiger_Date_UIType {
 	 * @param <Object> $value
 	 * @return <Object>
 	 */
-	public function getDisplayValue($value) {
+	public function getDisplayValue($value, $record = false, $recordInstance = false) {
         $reminder_time = $this->getEditViewDisplayValue($value);
 		$reminder_value = $reminder_time[0].' '.vtranslate('LBL_DAYS').' '.$reminder_time[1].' '.vtranslate('LBL_HOURS').' '.$reminder_time[2].' '.vtranslate('LBL_MINUTES');
 		return $reminder_value;

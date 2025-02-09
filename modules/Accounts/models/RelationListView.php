@@ -123,6 +123,8 @@ class Accounts_RelationListView_Model extends Vtiger_RelationListView_Model {
 	 */
 	public function getEntries($pagingModel) {
 		$relationModel = $this->getRelationModel();
+		if( ! $relationModel )
+			return [];
 		$parentRecordModel = $this->getParentRecordModel();
 		$relatedModuleName = $relationModel->getRelationModuleModel()->getName();
 	

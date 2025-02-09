@@ -406,6 +406,8 @@ class CurrencyField {
 	
 	public static function convertToDollar($amount, $conversionRate) {
 		if ($conversionRate == 0) return 0;
+		if( is_string($amount) )
+			$amount = floatval($amount);
 		return $amount / $conversionRate;
 	}
 	

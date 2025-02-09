@@ -402,7 +402,7 @@ class Settings_MailConverter_Record_Model extends Settings_Vtiger_Record_Model {
         return $fieldModel->isEditable();
     }
     
-    public function getDisplayValue($fieldName) {
+    public function getDisplayValue($fieldName, $record = false, $recordInstance = false) {
         if(is_a($fieldName, "Vtiger_Field_Model"))
 		$fieldName = $fieldName->getName();
 	$value = $this->get($fieldName);

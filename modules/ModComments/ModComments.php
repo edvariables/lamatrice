@@ -110,7 +110,7 @@ class ModComments extends ModCommentsCore {
 		}
 	}
 
-	function getListButtons($app_strings) {
+	function getListButtons($app_strings, $mod_strings = false) {
 		$list_buttons = Array();
 		return $list_buttons;
 	}

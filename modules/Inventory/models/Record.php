@@ -15,7 +15,7 @@ class Inventory_Record_Model extends Vtiger_Record_Model {
 
 	private static $currencies_cache;
 
-	public static function getInstanceById($record, $moduleName){
+	public static function getInstanceById($record, $moduleName = null){
 		$instance = parent::getInstanceById($record, $moduleName);
 		$instance->calculateBalance();
 		return $instance;
@@ -99,7 +99,7 @@ class Inventory_Record_Model extends Vtiger_Record_Model {
 	
 				if ($taxtype == 'individual') {
 					$taxDetails = getTaxDetailsForProduct($productId, 'all');
-					$taxCount = count($taxDetails);
+					$taxCount = $taxDetails ? count($taxDetails) : 0;
 					$taxTotal = '0.00';
 					if($taxCount == 1) {
 						$taxValue = $product['taxes'][0]['percentage'];

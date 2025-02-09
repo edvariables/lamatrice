@@ -261,7 +261,7 @@ function getAllTaxes($available='all', $sh='',$mode='',$id='')
 	if($sh != '' && $sh == 'sh') {
 		$tablename = 'vtiger_shippingtaxinfo';
 		$value_table='vtiger_inventoryshippingrel';
-		if($mode == 'edit' && id != '') {
+		if($mode == 'edit' && $id != '') {
 			$sql = "SELECT * FROM $tablename"
 				. ($include_deleted ? '' : ' WHERE deleted=0');
 			$result = $adb->pquery($sql, array());
@@ -684,13 +684,15 @@ function saveInventoryProductDetails(&$focus, $module, $update_prod_stock='false
 		else
 		{
 			$taxes_for_product = getTaxDetailsForProduct($prod_id,'all');
-			for($tax_count=0;$tax_count<count($taxes_for_product);$tax_count++)
-			{
-				$tax_name = $taxes_for_product[$tax_count]['taxname'];
-				$request_tax_name = $tax_name."_percentage".$i;
+			if( $taxes_for_product ){
+				for($tax_count=0;$tax_count<count($taxes_for_product);$tax_count++)
+				{
+					$tax_name = $taxes_for_product[$tax_count]['taxname'];
+					$request_tax_name = $tax_name."_percentage".$i;
 
-				$updatequery .= " $tax_name = ?,";
-				array_push($updateparams, $_REQUEST[$request_tax_name]);
+					$updatequery .= " $tax_name = ?,";
+					array_push($updateparams, $_REQUEST[$request_tax_name]);
+				}
 			}
 			$updatequery = trim($updatequery,',')." where id=? and productid=? and lineitem_id = ?";
 			array_push($updateparams, $focus->id,$prod_id, $lineitem_id);

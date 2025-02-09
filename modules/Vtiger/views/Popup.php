@@ -33,9 +33,9 @@ class Vtiger_Popup_View extends Vtiger_Footer_View {
 	}
 
 	/* ED160101 */
-	function preProcess(Vtiger_Request $request) {		
+	function preProcess(Vtiger_Request $request, $display = true) {		
 		$this->ensureSearchParamsAreArray($request);
-		parent::preProcess($request);
+		parent::preProcess($request, $display);
 	}
 	
 	function process (Vtiger_Request $request) {

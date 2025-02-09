@@ -111,7 +111,7 @@ class Settings_CronTasks_Record_Model extends Settings_Vtiger_Record_Model {
 	 * @param <String> $fieldName
 	 * @return <String>
 	 */
-	public function getDisplayValue($fieldName) {
+	public function getDisplayValue($fieldName, $record = false, $recordInstance = false) {
 		if(is_a($fieldName, "Vtiger_Field_Model"))
 			$fieldName = $fieldName->getName();
 		

@@ -129,7 +129,7 @@ class Faq extends CRMEntity {
 	 * @param - $module Primary module name
 	 * returns the query string formed on fetching the related data for report for primary module
 	 */
-	function generateReportsQuery($module){
+	function generateReportsQuery($module, $queryPlanner = false){
 	 			$moduletable = $this->table_name;
 	 			$moduleindex = $this->table_index;
 	 			

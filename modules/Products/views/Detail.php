@@ -26,7 +26,7 @@ class Products_Detail_View extends Vtiger_Detail_View {
 		return parent::showModuleDetailView($request);
 	}
 
-	public function showModuleBasicView(Vtiger_Request $request) {
+	public function showModuleBasicView($request) {
 		return $this->showModuleDetailView($request);
 	}
 

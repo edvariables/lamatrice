@@ -94,7 +94,7 @@ class Settings_SMSNotifier_Record_Model extends Settings_Vtiger_Record_Model {
 	 * @param <String> field name
 	 * @return <String> field value
 	 */
-	public function getDisplayValue($key) {
+	public function getDisplayValue($key, $record = false, $recordInstance = false) {
 		if(is_a($key, "Vtiger_Field_Model"))
 			$key = $key->getName();
 		$value = $this->get($key);

@@ -11,7 +11,7 @@
 -->*}
 {strip}
 	<span class="pull-right listViewActions">
-        {if (method_exists($MODULE_MODEL,'isPagingSupported') && ($MODULE_MODEL->isPagingSupported()  eq true)) || !method_exists($MODULE_MODEL,'isPagingSupported')}
+        {if ( ! isset($MODULE_MODEL) || method_exists($MODULE_MODEL,'isPagingSupported') && ($MODULE_MODEL->isPagingSupported()  eq true)) || !method_exists($MODULE_MODEL,'isPagingSupported')}
 		<span class="pageNumbers alignTop" data-placement="bottom" >
 			{if $LISTVIEW_ENTIRES_COUNT}{$PAGING_MODEL->getRecordStartRange()}&nbsp;{vtranslate('LBL_to', $MODULE)}&nbsp;{$PAGING_MODEL->getRecordEndRange()}{/if}
 		</span>

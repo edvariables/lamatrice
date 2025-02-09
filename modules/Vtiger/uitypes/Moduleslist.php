@@ -23,7 +23,7 @@ class Vtiger_Moduleslist_UIType extends Vtiger_Base_UIType {
 	 * @param <Object> $value
 	 * @return <Object>
 	 */
-	public function getDisplayValue($value) {//tmp to check !!
+	public function getDisplayValue($value, $record = false, $recordInstance = false) {//tmp to check !!
 		return vtranslate($value, $value);
 	}
 

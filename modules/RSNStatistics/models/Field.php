@@ -5,7 +5,7 @@
 
 class RSNStatistics_Field_Model extends Vtiger_Field_Model {
 
-	public function getPicklistValuesForCustomView(){
+	public function getPicklistValuesForCustomView(&$picklistvaluesdata = false){
 		switch($this->get('column')){
 		case 'stats_periodicite':
 			if($this->get('parentid'))
@@ -13,7 +13,7 @@ class RSNStatistics_Field_Model extends Vtiger_Field_Model {
 			else
 				throw new Exception('La propriété parentid devrait fournir le rsnstatisticsid du contexte');
 		default:
-			return parent::getPicklistValuesForCustomView();
+			return parent::getPicklistValuesForCustomView($picklistvaluesdata);
 		}
 	}
 	
