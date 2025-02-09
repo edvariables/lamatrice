@@ -702,7 +702,7 @@ class iCalendar_property_duration extends iCalendar_property {
         }
 
         // Value must be positive
-        return ($value{0} != '-');
+        return ($value[0] != '-');
     }
 }
 
@@ -1162,13 +1162,13 @@ class iCalendar_property_request_status extends iCalendar_property {
         $escch = false;
 
         for($i = 0; $i < $len; ++$i) {
-            if($value{$i} == ';' && !$escch) {
+            if($value[$i] == ';' && !$escch) {
                 // Token completed
                 $parts[] = substr($value, $from, $i - $from);
                 $from = $i + 1;
                 continue;
             }
-            $escch = ($value{$i} == '\\');
+            $escch = ($value[$i] == '\\');
         }
         // Add one last token with the remaining text; if the value
         // ended with a ';' it was illegal, so check that this token
@@ -1189,7 +1189,7 @@ class iCalendar_property_request_status extends iCalendar_property {
             return false;
         }
 
-        if($parts[0]{0} < '1' || $parts[0]{0} > '4') {
+        if($parts[0][0] < '1' || $parts[0][0] > '4') {
             return false;
         }
 
@@ -1201,11 +1201,11 @@ class iCalendar_property_request_status extends iCalendar_property {
         }
 
         for($i = 1; $i < $len; ++$i) {
-            if(($i & 1) == 1 && $parts[0]{$i} != '.') {
+            if(($i & 1) == 1 && $parts[0][$i] != '.') {
                 // Even-indexed chars must be periods
                 return false;
             }
-            else if(($i & 1) == 0 && ($parts[0]{$i} < '0' || $parts[0]{$i} > '9')) {
+            else if(($i & 1) == 0 && ($parts[0][$i] < '0' || $parts[0][$i] > '9')) {
                 // Odd-indexed chars must be numbers
                 return false;
             }
