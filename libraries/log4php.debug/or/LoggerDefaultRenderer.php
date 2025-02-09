@@ -39,7 +39,7 @@ class LoggerDefaultRenderer extends LoggerObjectRenderer{
     /**
      * Constructor
      */
-    function LoggerDefaultRenderer()
+    function __construct()
     {
         return;
     }

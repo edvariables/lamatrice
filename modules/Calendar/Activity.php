@@ -132,7 +132,7 @@ class Activity extends CRMEntity {
 
 	//var $groupTable = Array('vtiger_activitygrouprelation','activityid');
 
-	function Activity() {
+	function __construct() {
 		$this->log = LoggerManager::getLogger('Calendar');
 		$this->db = PearDatabase::getInstance();
 		$this->column_fields = getColumnFields('Calendar');
@@ -561,9 +561,9 @@ function insertIntoRecurringTable(& $recurObj)
 	 * @param   string   $criteria     - query string
 	 * returns  activity records in array format($list) or null value
          */	 
-  	function get_full_list($criteria) {
+  	function get_full_list($order_by = '', $where = '') {
 	 	global $log;
-		$log->debug("Entering get_full_list(".$criteria.") method ...");
+		$log->debug("Entering get_full_list(".$where.") method ...");
 	    $query = "select vtiger_crmentity.crmid,vtiger_crmentity.smownerid,vtiger_crmentity.setype, vtiger_activity.*, 
 	    		vtiger_contactdetails.lastname, vtiger_contactdetails.firstname, vtiger_contactdetails.contactid 
 	    		from vtiger_activity 
@@ -571,7 +571,8 @@ function insertIntoRecurringTable(& $recurObj)
 	    		left join vtiger_cntactivityrel on vtiger_cntactivityrel.activityid= vtiger_activity.activityid 
 	    		left join vtiger_contactdetails on vtiger_contactdetails.contactid= vtiger_cntactivityrel.contactid 
 	    		left join vtiger_seactivityrel on vtiger_seactivityrel.activityid = vtiger_activity.activityid 
-	    		WHERE vtiger_crmentity.deleted=0 ".$criteria;
+	    		WHERE vtiger_crmentity.deleted=0 ".$where."
+				".$order_by;
     	$result =& $this->db->query($query);
         
     if($this->db->getRowCount($result) > 0){
@@ -748,17 +749,20 @@ function insertIntoRecurringTable(& $recurObj)
 				$params = array($activity_id, $reminder_time, 0, $recurid);
 			}
 		}
-		elseif(($remindermode == 'delete') && ($this->db->num_rows($result_exist) > 0))
-		{
-			$query = "DELETE FROM ".$this->reminder_table." WHERE activity_id = ?";
-			$params = array($activity_id);
+		elseif($remindermode == 'delete')
+		{ if($this->db->num_rows($result_exist) > 0)
+			{
+				$query = "DELETE FROM ".$this->reminder_table." WHERE activity_id = ?";
+				$params = array($activity_id);
+			}
 		}
 		else
 		{
 			$query = "INSERT INTO ".$this->reminder_table." VALUES (?,?,?,?)";
 			$params = array($activity_id, $reminder_time, 0, $recurid);
 		}
-      	$this->db->pquery($query,$params,true,"Error in processing vtiger_table $this->reminder_table");
+		if($query)
+			$this->db->pquery($query,$params,true,"Error in processing vtiger_table $this->reminder_table");
 		$log->debug("Exiting vtiger_activity_reminder method ...");
 	}
 

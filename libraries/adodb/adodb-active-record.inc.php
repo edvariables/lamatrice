@@ -70,7 +70,7 @@ class ADODB_Active_Record {
 	}
 	
 	// php4 constructor
-	function ADODB_Active_Record($table = false, $pkeyarr=false, $db=false)
+	function __construct($table = false, $pkeyarr=false, $db=false)
 	{
 		ADODB_Active_Record::__construct($table,$pkeyarr,$db);
 	}

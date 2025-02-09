@@ -116,7 +116,7 @@ class Accounts extends CRMEntity {
 		'Critere4D' => array('table_name' => 'vtiger_critere4dcontrel', 'table_index' => 'critere4did', 'rel_index' => 'contactid'),
 	);
 
-	function Accounts() {
+	function __construct() {
 		$this->log =LoggerManager::getLogger('account');
 		$this->db = PearDatabase::getInstance();
 		$this->column_fields = getColumnFields('Accounts');
@@ -1512,7 +1512,7 @@ class Accounts extends CRMEntity {
 		}
 	}
 
-	function getListButtons($app_strings,$mod_strings) {
+	function getListButtons($app_strings, $mod_strings = false) {
 		$list_buttons = Array();
 
 		if(isPermitted('Accounts','Delete','') == 'yes') {

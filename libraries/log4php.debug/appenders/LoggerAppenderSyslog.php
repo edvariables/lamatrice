@@ -48,7 +48,7 @@ class LoggerAppenderSyslog extends LoggerAppenderSkeleton {
      *
      * @param string $name appender name
      */
-    function LoggerAppenderSyslog($name)
+    function __construct($name)
     {
         $this->LoggerAppenderSkeleton($name);
     }

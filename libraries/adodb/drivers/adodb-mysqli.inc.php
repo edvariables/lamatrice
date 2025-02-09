@@ -51,7 +51,7 @@ class ADODB_mysqli extends ADOConnection {
 	var $nameQuote = '`';		/// string to use to quote identifiers and names
 	var $optionFlags = array(array(MYSQLI_READ_DEFAULT_GROUP,0));
 	
-	function ADODB_mysqli() 
+	function __construct() 
 	{			
 	 // if(!extension_loaded("mysqli"))
 	      ;//trigger_error("You must have the mysqli extension installed.", E_USER_ERROR);
@@ -192,7 +192,7 @@ class ADODB_mysqli extends ADOConnection {
 	// ensure that the variable is not quoted twice, once by qstr and once 
 	// by the magic_quotes_gpc.
 	//
-	//Eg. $s = $db->qstr(_GET['name'],get_magic_quotes_gpc());
+	//Eg. $s = $db->qstr(_GET['name'], function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc());
 	function qstr($s, $magic_quotes = false)
 	{
 		if (!$magic_quotes) {
@@ -283,7 +283,7 @@ class ADODB_mysqli extends ADOConnection {
 	}
 
 	  
-	function &MetaIndexes ($table, $primary = FALSE)
+	function &MetaIndexes ($table, $primary = FALSE, $owner = false)
 	{
 		// save old fetch mode
 		global $ADODB_FETCH_MODE;
@@ -494,7 +494,7 @@ class ADODB_mysqli extends ADOConnection {
 	    return  $foreign_keys;
 	}
 	
- 	function &MetaColumns($table) 
+ 	function &MetaColumns($table, $normalize = true) 
 	{
 		$false = false;
 		if (!$this->metaColumnsSQL)
@@ -733,7 +733,7 @@ class ADORecordSet_mysqli extends ADORecordSet{
 	var $databaseType = "mysqli";
 	var $canSeek = true;
 	
-	function ADORecordSet_mysqli($queryID, $mode = false) 
+	function __construct($queryID, $mode = false) 
 	{
 	  if ($mode === false) 
 	   { 
@@ -756,7 +756,7 @@ class ADORecordSet_mysqli extends ADORecordSet{
 	      break;
 	    }
 	  $this->adodbFetchMode = $mode;
-	  $this->ADORecordSet($queryID);	
+	  parent::__construct($queryID, $mode);	
 	}
 	
 	function _initrs()

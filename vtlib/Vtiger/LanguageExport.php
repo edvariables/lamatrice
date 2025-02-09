@@ -37,9 +37,9 @@ class Vtiger_LanguageExport extends Vtiger_Package {
 	 * Initialize Export
 	 * @access private
 	 */
-	function __initExport($languageCode) {
+	function __initExport($module, $moduleInstance) {
 		// Security check to ensure file is withing the web folder.
-		Vtiger_Utils::checkFileAccessForInclusion("languages/$languageCode/Vtiger.php");
+		// ED24 Vtiger_Utils::checkFileAccessForInclusion("languages/$languageCode/Vtiger.php");
 		
 		$this->_export_modulexml_file = fopen($this->__getManifestFilePath(), 'w');
 		$this->__write("<?xml version='1.0'?>\n");
@@ -117,7 +117,7 @@ class Vtiger_LanguageExport extends Vtiger_Package {
 	 * Export vtiger dependencies
 	 * @access private
 	 */
-	function export_Dependencies() {
+	function export_Dependencies($moduleInstance) {
 		global $vtiger_current_version, $adb;
 
 		$vtigerMinVersion = $vtiger_current_version;

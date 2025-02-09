@@ -35,8 +35,8 @@ Class Reports_Edit_View extends Vtiger_Edit_View {
 		}
 	}
 
-	public function preProcess(Vtiger_Request $request) {
-		parent::preProcess($request);
+	public function preProcess(Vtiger_Request $request, $display = false) {
+		parent::preProcess($request, $display);
 		$viewer = $this->getViewer($request);
 		$record = $request->get('record');
 

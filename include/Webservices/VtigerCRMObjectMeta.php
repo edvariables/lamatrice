@@ -25,7 +25,7 @@ class VtigerCRMObjectMeta extends EntityMeta {
 	*/
 	private $uicolorField;
 	
-	function VtigerCRMObjectMeta($webserviceObject,$user){
+	function __construct($webserviceObject,$user){
 		
 		parent::__construct($webserviceObject,$user);
 		

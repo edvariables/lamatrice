@@ -122,7 +122,7 @@ class RSNStatisticsResults_Module_Model extends Vtiger_Module_Model {
 	}
 	
 	//AUR_TMP check row in db !!!!!
-	public function getRelatedListFields($parentModuleName) {
+	public function getRelatedListFields($parentModuleName = false) {
 		$relatedListFields = array(
 			'name' => 'name',
 			'begin_date' => 'begin_date',

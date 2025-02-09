@@ -119,7 +119,7 @@ class VTWorkflowUtils {
 	 * @params :: $modulename - name of the module
 	 */
 
-	function checkModuleWorkflow($modulename) {
+	static function checkModuleWorkflow($modulename) {
 		global $adb;
 		$tabid = getTabid($modulename);
 		$modules_not_supported = array('Documents', 'Calendar', 'Emails', 'Faq', 'Events', 'PBXManager', 'Users');

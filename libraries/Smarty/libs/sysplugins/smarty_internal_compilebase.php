@@ -72,7 +72,17 @@ abstract class Smarty_Internal_CompileBase {
                 }
                 // named attribute
             } else {
-                $kv = each($mixed);
+                // $kv = each($mixed); DEPRECEATED
+				$key = key($mixed);
+				$value = current($mixed);
+				$each = is_null($key) ? false : [
+					1        => $value,
+					'value'    => $value,
+					0        => $key,
+					'key'    => $key,
+				];
+				next($mixed);
+				
                 // option flag?
                 if (in_array($kv['key'], $this->option_flags)) {
                     if (is_bool($kv['value'])) {
@@ -95,7 +105,7 @@ abstract class Smarty_Internal_CompileBase {
                     // must be named attribute
                 } else {
                     reset($mixed);
-                    $_indexed_attr[key($mixed)] = $mixed[key($mixed)];
+                    $_indexed_attr[$key] = $mixed[$key];
                 }
             }
         }

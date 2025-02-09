@@ -117,7 +117,7 @@ class LoggerDOMConfigurator extends LoggerConfigurator {
     /**
      * Constructor
      */
-    function LoggerDOMConfigurator()
+    function __construct()
     {
         $this->state    = array();
         $this->logger   = null;

@@ -10,8 +10,8 @@
 
 class Users_Index_View extends Vtiger_Basic_View {
 
-	public function preProcess (Vtiger_Request $request) {
-		parent::preProcess($request);
+	public function preProcess (Vtiger_Request $request, $display = false) {
+		parent::preProcess($request, $display);
 		$currentUserModel = Users_Record_Model::getCurrentUserModel();
 		if($currentUserModel->isAdminUser()) {
 			$settingsIndexView = new Settings_Vtiger_Index_View();

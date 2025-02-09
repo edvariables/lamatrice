@@ -24,7 +24,8 @@ $logsqltm =& LoggerManager::getLogger('SQLTIME');
 // See function convertPS2Sql in PearDatabase below
 class PreparedQMark2SqlValue {
 	// Constructor
-	function PreparedQMark2SqlValue($vals){
+	// function __construct($vals){
+	function __construct($vals){
         $this->ctr = 0;
         $this->vals = $vals;
     }
@@ -189,9 +190,11 @@ class PearDatabase{
     function checkConnection(){
 		global $log;
 
-		if(!isset($this->database)) {
+		if( ! isset($this->database)) {
 		    $this->println("TRANS creating new connection");
-		    $this->connect(false);
+		    $this->connect(true);
+			if( ! isset($this->database))
+				die( __CLASS__ . '->' . __FUNCTION__ . ' : Echec de connexion');
 		} else {
 		    //$this->println("checkconnect using old connection");
 		}
@@ -352,7 +355,7 @@ class PearDatabase{
 
 		$sql_start_time = microtime(true);
 		$params = $this->flatten_array($params);
-		if (count($params) > 0) {
+		if( $params && count($params) > 0) {
 			$log->debug('Prepared sql query parameters : [' . implode(",", $params) . ']');
 		}
 
@@ -552,15 +555,15 @@ class PearDatabase{
 
     function sql_quote($data) {
 		if (is_array($data)) {
-			switch($data{'type'}) {
+			switch($data['type']) {
 			case 'text':
 			case 'numeric':
 			case 'integer':
 			case 'oid':
-				return $this->quote($data{'value'});
+				return $this->quote($data['value']);
 				break;
 			case 'timestamp':
-				return $this->formatDate($data{'value'});
+				return $this->formatDate($data['value']);
 				break;
 			default:
 				throw new Exception("unhandled type: ".serialize($cur));
@@ -615,7 +618,7 @@ class PearDatabase{
     function run_query_field($query,$field='') {
 	    $rowdata = $this->run_query_record($query);
 	    if(isset($field) && $field != '')
-	    	return $rowdata{$field};
+	    	return $rowdata[$field];
 	    else
 	    	return array_shift($rowdata);
     }
@@ -623,7 +626,7 @@ class PearDatabase{
     function run_query_list($query,$field){
 	    $records = $this->run_query_allrecords($query);
 	    foreach($records as $walk => $cur)
-			$list[] = $cur{$field};
+			$list[] = $cur[$field];
     }
 
     function run_query_field_html($query,$field){
@@ -656,7 +659,7 @@ class PearDatabase{
 	    	throw new Exception("empty arrays not allowed");
 
 	    foreach($a as $walk => $cur)
-	    	$l .= ($l?',':'').$this->quote($cur{$field});
+	    	$l .= ($l?',':'').$this->quote($cur[$field]);
 
 	    return ' ( '.$l.' ) ';
     }
@@ -687,14 +690,14 @@ class PearDatabase{
     }
 
 	// Function to get particular row from the query result
-	function query_result_rowdata(&$result, $row=0, $parseHtml=true) {
+	function query_result_rowdata(&$result, $row=0) {
 		if (!is_object($result))
                 throw new Exception("result is not an object");
 		$result->Move($row);
 		$rowdata = $this->change_key_case($result->FetchRow());
 
 		foreach($rowdata as $col => $coldata) {
-			if($col != 'fieldlabel' && $parseHtml)
+			if($col != 'fieldlabel')
 				$rowdata[$col] = to_html($coldata);
 		}
 		return $rowdata;
@@ -810,8 +813,11 @@ class PearDatabase{
     }
 
     function connect($dieOnError = false) {
-		global $dbconfigoption,$dbconfig;
+		global $dbconfigoption, $dbconfig;
 		if(!isset($this->dbType)) {
+			if( $dieOnError ){
+				die( __CLASS__ . '->' . __FUNCTION__ . ' : échec de connexion, dbType non défini');
+			}
 		    $this->println("ADODB Connect : DBType not specified");
 		    return;
 		}
@@ -831,12 +837,15 @@ class PearDatabase{
 				$this->executeSetNamesUTF8SQL(true);
 			}
 		}
+		elseif( $dieOnError ){
+			die( __CLASS__ . '->' . __FUNCTION__ . ' : échec de connexion');
+		}
 	}
 
 	/**
 	 * Constructor
 	 */
-    function PearDatabase($dbtype='',$host='',$dbname='',$username='',$passwd='') {
+    function __construct($dbtype='',$host='',$dbname='',$username='',$passwd='') {
 		global $currentModule;
 		$this->log =& LoggerManager::getLogger('PearDatabase_'. $currentModule);
 		$this->resetSettings($dbtype,$host,$dbname,$username,$passwd);

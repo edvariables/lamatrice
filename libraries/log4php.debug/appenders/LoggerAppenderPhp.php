@@ -51,7 +51,7 @@ class LoggerAppenderPhp extends LoggerAppenderSkeleton {
      *
      * @param string $name appender name
      */
-    function LoggerAppenderPhp($name)
+    function __construct($name)
     {
         $this->LoggerAppenderSkeleton($name);
     }

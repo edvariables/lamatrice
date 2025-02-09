@@ -31,7 +31,7 @@ class RSN_DBCogilog_Module extends RSN_DBConnector_Module {
 	/**
 	 * Method to get db data
 	 */
-	function getDBRows($query) {
+	function getDBRows($query = '') {
 		$cx = $this->getDBConnexion();
 		
 		// Exécution de la requête SQL

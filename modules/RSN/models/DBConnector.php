@@ -40,11 +40,15 @@ class RSN_DBConnector_Module {
 		$cxString = $this->getDBConnexionString();
 		switch($this->getDefaultDBType()){
 		case 'postgresql' :
+			if( ! function_exists('pg_connect') )
+				die('Connexion impossible : Module pg non installé');
 			return pg_connect($cxString)
 			    or die('Connexion impossible : ' . pg_last_error());
 		case 'mysql' :
 		case 'mysqli' :
 			//TODO
+			if( ! function_exists('pg_connect') )
+				die('Connexion impossible : Module pg non installé');
 			return pg_connect($cxString)
 			    or die('Connexion impossible : ' . pg_last_error());
 		}

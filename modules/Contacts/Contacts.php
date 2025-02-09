@@ -188,7 +188,7 @@ class Contacts extends CRMEntity {
 		'ContactEmails' => array('table_name' => 'vtiger_contactemails', 'table_index' => 'contactid', 'rel_index' => 'contactid'),
 	);
 
-	function Contacts() {
+	function __construct() {
 		$this->log = LoggerManager::getLogger('contact');
 		$this->db = PearDatabase::getInstance();
 		$this->column_fields = getColumnFields('Contacts');
@@ -2198,7 +2198,7 @@ class Contacts extends CRMEntity {
 		}
 	}
 
-	function getListButtons($app_strings) {
+	function getListButtons($app_strings, $mod_strings = false) {
 		$list_buttons = Array();
 
 		if(isPermitted('Contacts','Delete','') == 'yes') {

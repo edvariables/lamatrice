@@ -438,6 +438,10 @@ class Vtiger_Deprecated {
 		$filePathParts = explode('/', $relativeFilePath);
 
 		if (stripos($realfilepath, $rootdirpath) !== 0 || in_array($filePathParts[0], $unsafeDirectories)) {
+				echo '<pre>';
+					debug_print_backtrace();
+				echo '</pre>';
+				var_dump($rootdirpath);
 				var_dump($realfilepath);
 				var_dump($filePathParts[0]);
 				var_dump($unsafeDirectories);
@@ -588,7 +592,7 @@ class Vtiger_Deprecated {
 		return $result;
 	}
 
-	function return_app_list_strings_language($language, $module='Vtiger') {
+	static function return_app_list_strings_language($language, $module='Vtiger') {
 		$strings = Vtiger_Language_Handler::getModuleStringsFromFile($language, $module);
 		return $strings['languageStrings'];
 	}

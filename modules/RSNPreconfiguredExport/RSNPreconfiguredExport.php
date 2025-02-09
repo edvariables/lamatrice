@@ -89,7 +89,7 @@ class RSNPreconfiguredExport extends Vtiger_CRMEntity {
 	var $default_order_by = '';
 	var $default_sort_order='ASC';
 
-	function RSNPreconfiguredExport() {
+	function __construct() {
 		$this->log =LoggerManager::getLogger('RSNPreconfiguredExport');
 		$this->db = PearDatabase::getInstance();
 		$this->column_fields = getColumnFields('RSNPreconfiguredExport');

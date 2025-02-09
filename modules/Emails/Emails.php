@@ -72,7 +72,7 @@ class Emails extends CRMEntity {
 
 	/** This function will set the columnfields for Email module
 	 */
-	function Emails() {
+	function __construct() {
 		$this->log = LoggerManager::getLogger('email');
 		$this->log->debug("Entering Emails() method ...");
 		$this->log = LoggerManager::getLogger('email');

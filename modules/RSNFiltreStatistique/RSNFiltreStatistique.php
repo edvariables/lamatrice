@@ -77,7 +77,7 @@ class RSNFiltreStatistique extends Vtiger_CRMEntity {
 	var $default_order_by = '';
 	var $default_sort_order='ASC';
 
-	function RSNFiltreStatistique() {
+	function __construct() {
 		$this->log =LoggerManager::getLogger('RSNFiltreStatistique');
 		$this->db = PearDatabase::getInstance();
 		$this->column_fields = getColumnFields('RSNFiltreStatistique');

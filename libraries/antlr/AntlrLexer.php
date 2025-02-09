@@ -140,8 +140,11 @@ abstract class AntlrLexer extends BaseRecognizer{
 		}
 	}
 	
-	public function matchAny() {
-		$this->input->consume();
+	public function matchAny( $input ) {
+		if( $input )
+			$input->consume();
+		else
+			$this->input->consume();
 	}
 	
 	public function matchChar($c) {
@@ -280,18 +283,23 @@ abstract class AntlrLexer extends BaseRecognizer{
 	 *  it all works out.  You can instead use the rule invocation stack
 	 *  to do sophisticated error recovery if you are in a fragment rule.
 	 */
-	public function recover($re) {
-		$this->input->consume();
+	public function recover($input, $re) {
+		if( $input )
+			$input->consume();
+		else
+			$this->input->consume();
 	}
 	
 	
-	public function traceIn($ruleName, $ruleIndex)  {
-		$inputSymbol = $this->input->LT(1)." line=".$this->getLine().":".$this->getCharPositionInLine();
+	public function traceIn($ruleName, $ruleIndex, $inputSymbol)  {
+		if( ! $inputSymbol )
+			$inputSymbol = $this->input->LT(1)." line=".$this->getLine().":".$this->getCharPositionInLine();
 		parent::traceIn($ruleName, $ruleIndex, $inputSymbol);
 	}
 
-	public function traceOut($ruleName, $ruleIndex)  {
-		$inputSymbol = $this->input->LT(1)." line=".$this->getLine().":".$this->getCharPositionInLine();
+	public function traceOut($ruleName, $ruleIndex, $inputSymbol)  {
+		if( ! $inputSymbol )
+			$inputSymbol = $this->input->LT(1)." line=".$this->getLine().":".$this->getCharPositionInLine();
 		parent::traceOut($ruleName, $ruleIndex, $inputSymbol);
 	}
 }

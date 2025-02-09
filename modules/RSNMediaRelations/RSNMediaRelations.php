@@ -100,7 +100,7 @@ class RSNMediaRelations extends Vtiger_CRMEntity {
 	var $default_order_by = 'daterelation';
 	var $default_sort_order='DESC';
 
-	function RSNMediaRelations() {
+	function __construct() {
 		$this->log =LoggerManager::getLogger('RSNMediaRelations');
 		$this->db = PearDatabase::getInstance();
 		$this->column_fields = getColumnFields('RSNMediaRelations');

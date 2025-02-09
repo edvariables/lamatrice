@@ -78,7 +78,7 @@ class LoggerLayoutHtml extends LoggerLayout {
     /**
      * Constructor
      */
-    function LoggerLayoutHtml()
+    function __construct()
     {
         return;
     }

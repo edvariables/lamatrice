@@ -97,7 +97,7 @@ class Potentials extends CRMEntity {
 	var $def_basicsearch_col = 'potentialname';
 	
 	//var $groupTable = Array('vtiger_potentialgrouprelation','potentialid');
-	function Potentials() {
+	function __construct() {
 		$this->log = LoggerManager::getLogger('potential');
 		$this->db = PearDatabase::getInstance();
 		$this->column_fields = getColumnFields('Potentials');
@@ -602,7 +602,7 @@ class Potentials extends CRMEntity {
 	 * @param Array List of Entity Id's from which related records need to be transfered
 	 * @param Integer Id of the the Record to which the related records are to be moved
 	 */
-	function transferRelatedRecords($module, $transferEntityIds, $entityId) {
+	function transferRelatedRecords($module, $transferEntityIds, $entityId, &$countingOnly = false) {
 		global $adb,$log;
 		$log->debug("Entering function transferRelatedRecords ($module, $transferEntityIds, $entityId)");
 

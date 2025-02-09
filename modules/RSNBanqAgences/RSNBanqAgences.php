@@ -81,7 +81,7 @@ class RSNBanqAgences extends Vtiger_CRMEntity {
 	var $default_order_by = '';
 	var $default_sort_order='ASC';
 
-	function RSNBanqAgences() {
+	function __construct() {
 		$this->log =LoggerManager::getLogger('RSNBanqAgences');
 		$this->db = PearDatabase::getInstance();
 		$this->column_fields = getColumnFields('RSNBanqAgences');

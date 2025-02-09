@@ -38,7 +38,7 @@ class  ADODB_ado_mssql extends ADODB_ado {
 	
 	//var $_inTransaction = 1; // always open recordsets, so no transaction problems.
 	
-	function ADODB_ado_mssql()
+	function __construct()
 	{
 	        $this->ADODB_ado();
 	}

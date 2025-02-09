@@ -16,7 +16,7 @@ class RecycleBin_ListView_Model extends Vtiger_ListView_Model {
 	 * @param <Number> $viewId - Custom View Id
 	 * @return Vtiger_ListView_Model instance
 	 */
-	public static function getInstance($moduleName, $sourceModule) {
+	public static function getInstance($moduleName, $sourceModule = '0', $moreFilters = false) {
 		$db = PearDatabase::getInstance();
 		$currentUser = vglobal('current_user');
 

@@ -52,7 +52,7 @@ class LoggerRendererMap {
     /**
      * Constructor
      */
-    function LoggerRendererMap()
+    function __construct()
     {
         $this->map = array();
         $this->defaultRenderer = new LoggerDefaultRenderer();

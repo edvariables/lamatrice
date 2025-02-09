@@ -52,7 +52,7 @@ class LoggerAppenderDailyFile extends LoggerAppenderFile {
     *
     * @param string $name appender name
     */
-    function LoggerAppenderDailyFile($name)
+    function __construct($name)
     {
         $this->LoggerAppenderFile($name); 
     }

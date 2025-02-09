@@ -89,7 +89,7 @@ class RSNStatisticsFields extends Vtiger_CRMEntity {
 	var $default_order_by = 'sequence';
 	var $default_sort_order='ASC';
 
-	function RSNStatisticsFields() {
+	function __construct() {
 		$this->log =LoggerManager::getLogger('RSNStatisticsFields');
 		$this->db = PearDatabase::getInstance();
 		$this->column_fields = getColumnFields('RSNStatisticsFields');

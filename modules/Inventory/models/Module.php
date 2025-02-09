@@ -102,10 +102,20 @@ class Inventory_Module_Model extends Vtiger_Module_Model {
 
 	/**
 	 * Function returns export query
-	 * @param <String> $where
+	 * @param <String> $query
 	 * @return <String> export query
 	 */
-	public function getExportQuery($focus, $query) {
+	public function getExportQuery($query) {
+		return $query;
+	}
+
+	/**
+	 * Function returns export query
+	 * @param <String> $focus
+	 * @param <String> $query
+	 * @return <String> export query
+	 */
+	public function getExportQueryFocused($focus, $query) {
 		$baseTableName = $focus->table_name;
 		$splitQuery = preg_split('/ FROM /i', $query);
 		$columnFields = explode(',', $splitQuery[0]);

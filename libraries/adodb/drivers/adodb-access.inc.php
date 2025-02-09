@@ -28,7 +28,7 @@ class  ADODB_access extends ADODB_odbc {
 	var $sysTimeStamp = 'NOW';
 	var $hasTransactions = false;
 	
-	function ADODB_access()
+	function __construct()
 	{
 	global $ADODB_EXTENSION;
 	
@@ -77,7 +77,7 @@ class  ADORecordSet_access extends ADORecordSet_odbc {
 	
 	var $databaseType = "access";		
 	
-	function ADORecordSet_access($id,$mode=false)
+	function __construct($id,$mode=false)
 	{
 		return $this->ADORecordSet_odbc($id,$mode);
 	}

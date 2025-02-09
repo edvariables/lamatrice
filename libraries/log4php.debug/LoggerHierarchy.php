@@ -111,7 +111,7 @@ class LoggerHierarchy {
      * Create a new logger hierarchy.
      * @param object $root the root logger
      */
-    function LoggerHierarchy($root)
+    function __construct($root)
     {
         $this->root    =& $root;
         // Enable all level levels by default.

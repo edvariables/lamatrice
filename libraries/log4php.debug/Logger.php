@@ -37,7 +37,7 @@ class Logger extends LoggerCategory {
      * Constructor
      * @param string $name logger name 
      */    
-    function Logger($name)
+    function __construct($name)
     {
         $this->LoggerCategory($name);
     }

@@ -93,7 +93,7 @@ class RSNPanelsVariables extends Vtiger_CRMEntity {
 	var $default_order_by = 'sequence';
 	var $default_sort_order='ASC';
 
-	function RSNPanelsVariables() {
+	function __construct() {
 		$this->log =LoggerManager::getLogger('RSNPanelsVariables');
 		$this->db = PearDatabase::getInstance();
 		$this->column_fields = getColumnFields('RSNPanelsVariables');

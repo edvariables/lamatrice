@@ -142,7 +142,7 @@ class LoggerLoggingEvent {
     * @param mixed $message The message of this event.
     * @param integer $timeStamp the timestamp of this logging event.
     */
-    function LoggerLoggingEvent($fqcn, &$logger, $priority, $message, $timeStamp = null)
+    function __construct($fqcn, &$logger, $priority, $message, $timeStamp = null)
     {
         $this->fqcn = $fqcn;
         if (is_a($logger, 'logger')) {

@@ -65,7 +65,7 @@ class LoggerAppenderFile extends LoggerAppenderSkeleton {
      *
      * @param string $name appender name
      */
-    function LoggerAppenderFile($name)
+    function __construct($name)
     {
         $this->LoggerAppenderSkeleton($name);
     }

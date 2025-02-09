@@ -99,7 +99,7 @@ class LoggerAppenderSocket extends LoggerAppenderSkeleton {
      *
      * @param string $name appender name
      */
-    function LoggerAppenderSocket($name)
+    function __construct($name)
     {
         $this->LoggerAppenderSkeleton($name);
     }

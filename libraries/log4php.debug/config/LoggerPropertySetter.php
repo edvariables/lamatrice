@@ -65,7 +65,7 @@ class LoggerPropertySetter {
      * one or more times.
      * @param object &$obj the object for which to set properties
      */
-    function LoggerPropertySetter(&$obj)
+    function __construct(&$obj)
     {
         $this->obj =& $obj;
     }

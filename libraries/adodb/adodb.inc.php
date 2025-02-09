@@ -319,7 +319,7 @@
 	/**
 	 * Constructor
 	 */
-	function ADOConnection()
+	function __construct()
 	{
 		die('Virtual Class -- cannot instantiate');
 	}
@@ -549,7 +549,7 @@
 	*/
 	function QMagic($s)
 	{
-		return $this->qstr($s,get_magic_quotes_gpc());
+		return $this->qstr($s, function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc());
 	}
 
 	function q(&$s)
@@ -811,8 +811,9 @@
 				if (!$array_2d) $inputarr = array($inputarr);
 				foreach($inputarr as $arr) {
 					$sql = ''; $i = 0;
-					//Use each() instead of foreach to reduce memory usage -mikefedyk
-					while(list(, $v) = each($arr)) {
+					// //Use each() instead of foreach to reduce memory usage -mikefedyk
+					// while(list(, $v) = each($arr)) {
+					foreach($arr as $v) {
 						$sql .= $sqlarr[$i];
 						// from Ron Baldwin <ron.baldwin#sourceprose.com>
 						// Only quote string types
@@ -2497,7 +2498,7 @@ http://www.stanford.edu/dept/itss/docs/oracle/10g/server.101/b10759/statements_1
 	 *
 	 * @return  quoted string to be sent back to database
 	 */
-	function qstr($s,$magic_quotes=false)
+	function qstr($s, $magic_quotes=false)
 	{
 		if (!$magic_quotes) {
 
@@ -2672,7 +2673,7 @@ http://www.stanford.edu/dept/itss/docs/oracle/10g/server.101/b10759/statements_1
 	 * @param queryID  	this is the queryID returned by ADOConnection->_query()
 	 *
 	 */
-	function ADORecordSet($queryID)
+	function __construct($queryID)
 	{
 		$this->_queryID = $queryID;
 	}
@@ -3621,7 +3622,7 @@ http://www.stanford.edu/dept/itss/docs/oracle/10g/server.101/b10759/statements_1
 		 * Constructor
 		 *
 		 */
-		function ADORecordSet_array($fakeid=1)
+		function __construct($fakeid=1)
 		{
 		global $ADODB_FETCH_MODE,$ADODB_COMPAT_FETCH;
 

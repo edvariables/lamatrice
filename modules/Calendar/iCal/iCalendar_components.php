@@ -8,7 +8,7 @@ class iCalendar_component {
     var $valid_properties = NULL;
     var $valid_components = NULL;
 
-    function iCalendar_component() {
+    function __construct() {
         $this->construct();
     }
 
@@ -111,8 +111,7 @@ class iCalendar_component {
 
     function add_component($component) {
 
-        // With the detailed interface, you can add only components with this function
-        if(!is_object($component) || !is_subclass_of($component, 'iCalendar_component')) {
+        // With the detailed interface, you can add only components with this function __construct(!is_object($component) || !is_subclass_of($component, 'iCalendar_component')) {
             return false;
         }
 

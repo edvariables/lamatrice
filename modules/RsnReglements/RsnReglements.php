@@ -87,7 +87,7 @@ class RsnReglements extends Vtiger_CRMEntity {
 	var $default_order_by = '';
 	var $default_sort_order='ASC';
 
-	function RsnReglements() {
+	function __construct() {
 		$this->log =LoggerManager::getLogger('RsnReglements');
 		$this->db = PearDatabase::getInstance();
 		$this->column_fields = getColumnFields('RsnReglements');

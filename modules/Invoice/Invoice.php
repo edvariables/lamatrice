@@ -144,7 +144,7 @@ class Invoice extends CRMEntity {
 	
 	/**	Constructor which will set the column_fields in this object
 	 */
-	function Invoice() {
+	function __construct() {
 		$this->log =LoggerManager::getLogger('Invoice');
 		$this->log->debug("Entering Invoice() method ...");
 		$this->db = PearDatabase::getInstance();
@@ -401,7 +401,7 @@ class Invoice extends CRMEntity {
 	}
 
 	// Function to get column name - Overriding function of base class
-	function get_column_value($columname, $fldvalue, $fieldname, $uitype, $datatype) {
+	function get_column_value($columname, $fldvalue, $fieldname, $uitype, $datatype = '') {
 		if ($columname == 'salesorderid') {
 			if ($fldvalue == '') return null;
 		}

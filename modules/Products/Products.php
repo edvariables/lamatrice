@@ -83,7 +83,7 @@ class Products extends CRMEntity {
 
 	/**	Constructor which will set the column_fields in this object
 	 */
-	function Products() {
+	function __construct() {
 		$this->log =LoggerManager::getLogger('product');
 		$this->log->debug("Entering Products() method ...");
 		$this->db = PearDatabase::getInstance();
@@ -1135,7 +1135,7 @@ class Products extends CRMEntity {
 	 * @param Array List of Entity Id's from which related records need to be transfered
 	 * @param Integer Id of the the Record to which the related records are to be moved
 	 */
-	function transferRelatedRecords($module, $transferEntityIds, $entityId) {
+	function transferRelatedRecords($module, $transferEntityIds, $entityId, &$countingOnly = false) {
 		global $adb,$log;
 		$log->debug("Entering function transferRelatedRecords ($module, $transferEntityIds, $entityId)");
 

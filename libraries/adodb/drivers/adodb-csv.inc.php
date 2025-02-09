@@ -36,7 +36,7 @@ class ADODB_csv extends ADOConnection {
 	var $hasTransactions = false;
 	var $_errorNo = false;
 	
-	function ADODB_csv() 
+	function __construct() 
 	{		
 	}
 	

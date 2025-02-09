@@ -45,7 +45,7 @@ class LoggerAppenderNull extends LoggerAppenderSkeleton {
      *
      * @param string $name appender name
      */
-    function LoggerAppenderNull($name)
+    function __construct($name)
     {
         $this->LoggerAppenderSkeleton($name);
     }

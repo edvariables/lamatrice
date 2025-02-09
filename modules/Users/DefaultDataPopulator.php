@@ -17,7 +17,7 @@ require_once('include/utils/utils.php');
  */
 class DefaultDataPopulator extends CRMEntity {
 
-	function DefaultDataPopulator() {
+	function __construct() {
 		$this->log = LoggerManager::getLogger('DefaultDataPopulator');
 		$this->db = PearDatabase::getInstance();
 	}

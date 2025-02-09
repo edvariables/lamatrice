@@ -71,7 +71,7 @@ class LoggerLevel {
      * @param string $levelStr
      * @param integer $syslogEquivalent
      */
-    function LoggerLevel($level, $levelStr, $syslogEquivalent)
+    function __construct($level, $levelStr, $syslogEquivalent)
     {
         $this->level = $level;
         $this->levelStr = $levelStr;

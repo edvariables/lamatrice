@@ -88,7 +88,7 @@ class ADODB_oci8 extends ADOConnection {
 	
 	// var $ansiOuter = true; // if oracle9
     
-	function ADODB_oci8() 
+	function __construct() 
 	{
 		$this->_hasOCIFetchStatement = ADODB_PHPVER >= 0x4200;
 		if (defined('ADODB_EXTENSION')) $this->rsPrefix .= 'ext_';
@@ -1174,11 +1174,11 @@ SELECT /*+ RULE */ distinct b.column_name
 	 * 
 	 * @param s			the string to quote
 	 * @param [magic_quotes]	if $s is GET/POST var, set to get_magic_quotes_gpc().
-	 *				This undoes the stupidity of magic quotes for GPC.
+	 *				This undoes the stupidity of magic quotes for GPC. [function_exists('get_magic_quotes_gpc') && ]
 	 *
 	 * @return  quoted string to be sent back to database
 	 */
-	function qstr($s,$magic_quotes=false)
+	function qstr($s, $magic_quotes=false)
 	{	
 		//$nofixquotes=false;
 	
@@ -1212,7 +1212,7 @@ class ADORecordset_oci8 extends ADORecordSet {
 	
 	//var $_arr = false;
 		
-	function ADORecordset_oci8($queryID,$mode=false)
+	function __construct($queryID,$mode=false)
 	{
 		if ($mode === false) { 
 			global $ADODB_FETCH_MODE;
@@ -1475,7 +1475,7 @@ class ADORecordset_oci8 extends ADORecordSet {
 }
 
 class ADORecordSet_ext_oci8 extends ADORecordSet_oci8 {	
-	function ADORecordSet_ext_oci8($queryID,$mode=false) 
+	function __construct($queryID,$mode=false) 
 	{
 		if ($mode === false) { 
 			global $ADODB_FETCH_MODE;

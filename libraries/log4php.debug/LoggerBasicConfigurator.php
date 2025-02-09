@@ -39,7 +39,7 @@ require_once(LOG4PHP_DIR . '/LoggerManager.php');
  */
 class LoggerBasicConfigurator extends LoggerConfigurator {
 
-    function LoggerBasicConfigurator() 
+    function __construct() 
     {
         return;
     }

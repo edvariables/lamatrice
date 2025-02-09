@@ -104,7 +104,7 @@ class HelpDesk extends CRMEntity {
 
 	/**	Constructor which will set the column_fields in this object
 	 */
-	function HelpDesk()
+	function __construct()
 	{
 		$this->log =LoggerManager::getLogger('helpdesk');
 		$this->log->debug("Entering HelpDesk() method ...");
@@ -303,7 +303,7 @@ class HelpDesk extends CRMEntity {
 						)
 		where $i=0,1,..n & key = ticketid, title, firstname, ..etc(range_fields) & val = value of the key from db retrieved row
 	**/
-	function process_list_query($query)
+	function process_list_query($query, $row_offset = 0, $limit = -1, $max_per_page = -1)
 	{
 		global $log;
 		$log->debug("Entering process_list_query(".$query.") method ...");
@@ -555,7 +555,7 @@ case when (vtiger_users.user_name not like '') then $userNameSql else vtiger_gro
 	 * @param Array List of Entity Id's from which related records need to be transfered
 	 * @param Integer Id of the the Record to which the related records are to be moved
 	 */
-	function transferRelatedRecords($module, $transferEntityIds, $entityId) {
+	function transferRelatedRecords($module, $transferEntityIds, $entityId, &$countingOnly = false) {
 		global $adb,$log;
 		$log->debug("Entering function transferRelatedRecords ($module, $transferEntityIds, $entityId)");
 

@@ -110,7 +110,7 @@ class ADODB_ODBC_DB2 extends ADODB_odbc {
 	 var $hasInsertID = true;
 	var $rsPrefix = 'ADORecordset_odbc_';
 	
-	function ADODB_DB2()
+	function __construct()
 	{
 		if (strncmp(PHP_OS,'WIN',3) === 0) $this->curmode = SQL_CUR_USE_ODBC;
 		$this->ADODB_odbc();
@@ -304,7 +304,7 @@ class  ADORecordSet_odbc_db2 extends ADORecordSet_odbc {
 	
 	var $databaseType = "db2";		
 	
-	function ADORecordSet_db2($id,$mode=false)
+	function __construct($id,$mode=false)
 	{
 		$this->ADORecordSet_odbc($id,$mode);
 	}

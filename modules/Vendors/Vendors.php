@@ -71,7 +71,7 @@ class Vendors extends CRMEntity {
 	
 	/**	Constructor which will set the column_fields in this object
 	 */
-	function Vendors() {
+	function __construct() {
 		$this->log =LoggerManager::getLogger('vendor');
 		$this->log->debug("Entering Vendors() method ...");
 		$this->db = PearDatabase::getInstance();
@@ -297,7 +297,7 @@ class Vendors extends CRMEntity {
 	 * @param Array List of Entity Id's from which related records need to be transfered
 	 * @param Integer Id of the the Record to which the related records are to be moved
 	 */
-	function transferRelatedRecords($module, $transferEntityIds, $entityId) {
+	function transferRelatedRecords($module, $transferEntityIds, $entityId, &$countingOnly = false) {
 		global $adb,$log;
 		$log->debug("Entering function transferRelatedRecords ($module, $transferEntityIds, $entityId)");
 
@@ -394,7 +394,7 @@ class Vendors extends CRMEntity {
 	 * @param - $module Primary module name
 	 * returns the query string formed on fetching the related data for report for primary module
 	 */
-	function generateReportsQuery($module){
+	function generateReportsQuery($module, $queryPlanner = false){
 		$moduletable = $this->table_name;
 		$moduleindex = $this->table_index;
 		$modulecftable = $this->tab_name[2];

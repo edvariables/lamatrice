@@ -33,7 +33,7 @@ class ADODB_odbtp extends ADOConnection{
 	var $_canPrepareSP = false;
 	var $_dontPoolDBC = true;
 
-	function ADODB_odbtp()
+	function __construct()
 	{
 	}
 
@@ -567,7 +567,7 @@ class ADORecordSet_odbtp extends ADORecordSet {
 	var $databaseType = 'odbtp';
 	var $canSeek = true;
 
-	function ADORecordSet_odbtp($queryID,$mode=false)
+	function __construct($queryID,$mode=false)
 	{
 		if ($mode === false) {
 			global $ADODB_FETCH_MODE;
@@ -684,7 +684,7 @@ class ADORecordSet_odbtp_mssql extends ADORecordSet_odbtp {
 
 	var $databaseType = 'odbtp_mssql';
 
-	function ADORecordSet_odbtp_mssql($id,$mode=false)
+	function __construct($id,$mode=false)
 	{
 		return $this->ADORecordSet_odbtp($id,$mode);
 	}
@@ -694,7 +694,7 @@ class ADORecordSet_odbtp_access extends ADORecordSet_odbtp {
 
 	var $databaseType = 'odbtp_access';
 
-	function ADORecordSet_odbtp_access($id,$mode=false)
+	function __construct($id,$mode=false)
 	{
 		return $this->ADORecordSet_odbtp($id,$mode);
 	}
@@ -704,7 +704,7 @@ class ADORecordSet_odbtp_vfp extends ADORecordSet_odbtp {
 
 	var $databaseType = 'odbtp_vfp';
 
-	function ADORecordSet_odbtp_vfp($id,$mode=false)
+	function __construct($id,$mode=false)
 	{
 		return $this->ADORecordSet_odbtp($id,$mode);
 	}
@@ -714,7 +714,7 @@ class ADORecordSet_odbtp_oci8 extends ADORecordSet_odbtp {
 
 	var $databaseType = 'odbtp_oci8';
 
-	function ADORecordSet_odbtp_oci8($id,$mode=false)
+	function __construct($id,$mode=false)
 	{
 		return $this->ADORecordSet_odbtp($id,$mode);
 	}
@@ -724,7 +724,7 @@ class ADORecordSet_odbtp_sybase extends ADORecordSet_odbtp {
 
 	var $databaseType = 'odbtp_sybase';
 
-	function ADORecordSet_odbtp_sybase($id,$mode=false)
+	function __construct($id,$mode=false)
 	{
 		return $this->ADORecordSet_odbtp($id,$mode);
 	}

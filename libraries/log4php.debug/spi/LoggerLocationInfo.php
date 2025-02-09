@@ -71,7 +71,7 @@ class LoggerLocationInfo {
      * @param array $trace
      * @param mixed $caller
      */
-    function LoggerLocationInfo($trace, $fqcn = null)
+    function __construct($trace, $fqcn = null)
     {
         $this->lineNumber   = isset($trace['line']) ? $trace['line'] : null;
         $this->fileName     = isset($trace['file']) ? $trace['file'] : null;

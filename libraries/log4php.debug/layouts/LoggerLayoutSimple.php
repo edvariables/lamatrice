@@ -56,7 +56,7 @@ class LoggerLayoutSimple extends LoggerLayout {
     /**
      * Constructor
      */
-    function LoggerLayoutSimple()
+    function __construct()
     {
         return;
     }

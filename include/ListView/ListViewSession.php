@@ -26,7 +26,7 @@ class ListViewSession {
  * All Rights Reserved.
 */
 
-	function ListViewSession()
+	function __construct()
 	{
 		global $log,$currentModule;
 		$log->debug("Entering ListViewSession() method ...");
@@ -208,7 +208,7 @@ class ListViewSession {
 		return $start;
 	}
 
-	function setSessionQuery($currentModule,$query,$viewid){
+	static function setSessionQuery($currentModule,$query,$viewid){
 		if(isset($_SESSION[$currentModule.'_listquery'])){
 			if($_SESSION[$currentModule.'_listquery'] != $query){
 				unset($_SESSION[$currentModule.'_DetailView_Navigation'.$viewid]);

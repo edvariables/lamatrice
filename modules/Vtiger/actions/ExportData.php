@@ -115,7 +115,7 @@ class Vtiger_ExportData_Action extends Vtiger_Mass_Action {
 		$query = $queryGenerator->getQuery();
 
 		if(in_array($moduleName, getInventoryModules())){
-			$query = $this->moduleInstance->getExportQuery($this->focus, $query);
+			$query = $this->moduleInstance->getExportQueryFocused($this->focus, $query);
 		}
 
 		$this->accessibleFields = $queryGenerator->getFields();

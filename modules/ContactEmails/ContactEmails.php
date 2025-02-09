@@ -93,7 +93,7 @@ class ContactEmails extends Vtiger_CRMEntity {
 	var $default_order_by = '';
 	var $default_sort_order='ASC';
 
-	function ContactEmails() {
+	function __construct() {
 		$this->log =LoggerManager::getLogger('ContactEmails');
 		$this->db = PearDatabase::getInstance();
 		$this->column_fields = getColumnFields('ContactEmails');

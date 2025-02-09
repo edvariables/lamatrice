@@ -104,7 +104,7 @@ class freetag {
 	 * - PCONNECT: Whether to use ADODB persistent connections. [default: FALSE]
 	 * 
 	 */ 
-	function freetag($options = NULL) {
+	function __construct($options = NULL) {
 /*
 		$available_options = array('debug', 'db', 'db_user', 'db_pass', 'db_host', 'db_name', 'table_prefix', 'normalize_tags', 'normalized_valid_chars', 'block_multiuser_tag_on_object', 'MAX_TAG_LENGTH', 'ADODB_DIR', 'PCONNECT');
 		if (is_array($options)) {
@@ -266,7 +266,7 @@ class freetag {
 		}
 
 		foreach ($tagArray as $key => $value) {
-			$tagArray[$key] = $adb->qstr($value, get_magic_quotes_gpc());
+			$tagArray[$key] = $adb->qstr($value, function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc());
 		}
 
 		$tagArray = array_unique($tagArray);
@@ -716,7 +716,7 @@ class freetag {
 		foreach($tagArray as $tag) {
 			$tag = trim($tag);
 			if(($tag != '') && (strlen($tag) <= $this->_MAX_TAG_LENGTH)) {
-				if(get_magic_quotes_gpc()) {
+				if( function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc() ) {
 					$tag = addslashes($tag);
 				}
 				$this->safe_tag($tagger_id, $object_id, $tag, $module);
@@ -742,7 +742,7 @@ class freetag {
 			return $newwords;
 		}
 		# Perform tag parsing
-		if(get_magic_quotes_gpc()) {
+		if( function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc() ) {
 			$query = stripslashes(trim($tag_string));
 		} else {
 			$query = trim($tag_string);

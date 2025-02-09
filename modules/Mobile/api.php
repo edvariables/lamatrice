@@ -128,7 +128,7 @@ if(!defined('MOBILE_API_CONTROLLER_AVOID_TRIGGER')) {
 	}*/
 	// END
 	
-	if (get_magic_quotes_gpc()) {
+	if (function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc()) {
 	    $clientRequestValues = stripslashes_recursive($clientRequestValues);
 	}
 	Mobile_API_Controller::process(new Mobile_API_Request($clientRequestValues, $clientRequestValuesRaw));

@@ -88,7 +88,7 @@ class LoggerAppenderDb extends LoggerAppenderSkeleton {
      *
      * @param string $name appender name
      */
-    function LoggerAppenderDb($name)
+    function __construct($name)
     {
         $this->LoggerAppenderSkeleton($name);
     }

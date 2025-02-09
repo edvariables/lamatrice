@@ -19,8 +19,8 @@ class Settings_Workflows_Edit_View extends Settings_Vtiger_Index_View {
 		}
 	}
 
-	public function preProcess(Vtiger_Request $request) {
-		parent::preProcess($request);
+	public function preProcess(Vtiger_Request $request, $display = false) {
+		parent::preProcess($request, $display);
 		$viewer = $this->getViewer($request);
 
 		$recordId = $request->get('record');

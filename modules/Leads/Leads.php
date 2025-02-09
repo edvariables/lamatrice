@@ -94,7 +94,7 @@ class Leads extends CRMEntity {
 
 	//var $groupTable = Array('vtiger_leadgrouprelation','leadid');
 
-	function Leads()	{
+	function __construct()	{
 		$this->log = LoggerManager::getLogger('lead');
 		$this->log->debug("Entering Leads() method ...");
 		$this->db = PearDatabase::getInstance();
@@ -478,7 +478,7 @@ class Leads extends CRMEntity {
 	 * @param Array List of Entity Id's from which related records need to be transfered
 	 * @param Integer Id of the the Record to which the related records are to be moved
 	 */
-	function transferRelatedRecords($module, $transferEntityIds, $entityId) {
+	function transferRelatedRecords($module, $transferEntityIds, $entityId, &$countingOnly = false) {
 		global $adb,$log;
 		$log->debug("Entering function transferRelatedRecords ($module, $transferEntityIds, $entityId)");
 
@@ -592,7 +592,7 @@ class Leads extends CRMEntity {
 		}
 	}
 	
-	function getListButtons($app_strings) {
+	function getListButtons($app_strings, $mod_strings = false) {
 		$list_buttons = Array();
 
 		if(isPermitted('Leads','Delete','') == 'yes') {
@@ -624,7 +624,7 @@ class Leads extends CRMEntity {
 		}
 	}
 
-	function getQueryForDuplicates($module, $tableColumns, $selectedColumns = '', $ignoreEmpty = false) {
+	function getQueryForDuplicates($module, $tableColumns, $selectedColumns = '', $ignoreEmpty = false, $source_query = false, $among_query = false) {
 		if(is_array($tableColumns)) {
 			$tableColumnsString = implode(',', $tableColumns);
 		}

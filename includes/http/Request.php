@@ -21,7 +21,7 @@ class Vtiger_Request {
 	function __construct($values, $rawvalues = array(), $stripifgpc=true) {
 		$this->valuemap = $values;
 		$this->rawvaluemap = $rawvalues;
-		if ($stripifgpc && !empty($this->valuemap) && get_magic_quotes_gpc()) {
+		if ($stripifgpc && !empty($this->valuemap) && function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc()) {
 			$this->valuemap = $this->stripslashes_recursive($this->valuemap);
             $this->rawvaluemap = $this->stripslashes_recursive($this->rawvaluemap);
 		}

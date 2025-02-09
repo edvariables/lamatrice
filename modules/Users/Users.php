@@ -139,7 +139,8 @@ class Users extends CRMEntity {
      *
      */
 
-    function Users() {
+    // function __construct() {
+    function __construct() {
         $this->log = LoggerManager::getLogger('user');
         $this->log->debug("Entering Users() method ...");
         $this->db = PearDatabase::getInstance();
@@ -517,6 +518,7 @@ class Users extends CRMEntity {
                 }
                 return false;
             }
+			$this->db->completeTransaction(); //ED180706
         }
 
 
@@ -538,6 +540,7 @@ class Users extends CRMEntity {
             }
             return false;
         }
+		$this->db->completeTransaction(); //ED180706
 		
 		// Fill up the post-save state of the instance.
 		if (empty($this->column_fields['user_hash'])) {
@@ -694,7 +697,7 @@ class Users extends CRMEntity {
      * @param $module -- module name:: Type varchar
      *
      */
-    function saveentity($module) {
+    function saveentity($module, $fileid = '') {
         global $current_user;//$adb added by raju for mass mailing
         $insertion_mode = $this->mode;
         if(empty($this->column_fields['time_zone'])) {
@@ -788,7 +791,7 @@ class Users extends CRMEntity {
      * @param $table_name -- table name:: Type varchar
      * @param $module -- module:: Type varchar
      */
-    function insertIntoEntityTable($table_name, $module) {
+    function insertIntoEntityTable($table_name, $module, $fileid = '') {
         global $log;
         $log->info("function insertIntoEntityTable ".$module.' vtiger_table name ' .$table_name);
         global $adb, $current_user;
@@ -1136,7 +1139,7 @@ class Users extends CRMEntity {
      * @param $module -- module name:: Type varchar
      *
      */
-    function save($module_name) {
+    function save($module_name, $fileid = '') {
         global $log, $adb;
         //Save entity being called with the modulename as parameter
         $this->saveentity($module_name);
@@ -1393,7 +1396,7 @@ class Users extends CRMEntity {
      * @param $input_value -- Input value for the column taken from the User
      * @return Column value of the field.
      */
-    function get_column_value($columname, $fldvalue, $fieldname, $uitype, $datatype) {
+    function get_column_value($columname, $fldvalue, $fieldname, $uitype, $datatype = '') {
         if (is_uitype($uitype, "_date_") && $fldvalue == '') {
             return null;
         }

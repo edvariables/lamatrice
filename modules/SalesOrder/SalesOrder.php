@@ -117,7 +117,7 @@ class SalesOrder extends CRMEntity {
 	 *  This function creates an instance of LoggerManager class using getLogger method
 	 *  creates an instance for PearDatabase class and get values for column_fields array of SalesOrder class.
 	 */
-	function SalesOrder() {
+	function __construct() {
 		$this->log =LoggerManager::getLogger('SalesOrder');
 		$this->db = PearDatabase::getInstance();
 		$this->column_fields = getColumnFields('SalesOrder');

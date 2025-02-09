@@ -44,7 +44,7 @@ class LoggerFormattingInfo {
     /**
      * Constructor
      */
-    function LoggerFormattingInfo() {}
+    function __construct() {}
     
     function reset()
     {

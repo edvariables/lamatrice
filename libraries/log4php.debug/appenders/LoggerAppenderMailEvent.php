@@ -81,7 +81,7 @@ class LoggerAppenderMailEvent extends LoggerAppenderSkeleton {
      *
      * @param string $name appender name
      */
-    function LoggerAppenderMailEvent($name)
+    function __construct($name)
     {
         $this->LoggerAppenderSkeleton($name);
     }

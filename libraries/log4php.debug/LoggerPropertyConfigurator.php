@@ -99,7 +99,7 @@ class LoggerPropertyConfigurator extends LoggerConfigurator {
     /**
      * Constructor
      */
-    function LoggerPropertyConfigurator()
+    function __construct()
     {
         $this->loggerFactory = new LoggerDefaultCategoryFactory();
     }

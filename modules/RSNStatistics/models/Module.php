@@ -26,7 +26,7 @@ class RSNStatistics_Module_Model extends Vtiger_Module_Model {
 	
 	//ED devrait disparaitre au profit de Results
 	//AUR_TMP check row in db !!!!!
-	public function getRelatedListFields($parentModuleName) {
+	public function getRelatedListFields($parentModuleName = false) {
 		$relatedListFields = array(
 			'name' => 'name',
 			'begin_date' => 'begin_date',

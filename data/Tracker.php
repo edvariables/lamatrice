@@ -45,7 +45,7 @@ class Tracker {
         "item_summary"
     );
 
-    function Tracker()
+    function __construct()
     {
         $this->log = LoggerManager::getLogger('Tracker');
 	// $this->db = PearDatabase::getInstance();

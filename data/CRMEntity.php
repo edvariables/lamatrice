@@ -779,7 +779,7 @@ var_dump($params);*/
 				//var_dump("vtiger_contactdetailsaccount_id", $resultrow['vtiger_contactdetailsaccount_id']);
 				
 				if (!empty($resultrow['deleted'])) {
-					throw new Exception($app_strings['LBL_RECORD_DELETE'], 1);
+					throw new Exception($app_strings['LBL_RECORD_DELETE'] . ' ('.$module.' #'.$record.')', 1);
 				}
 				foreach ($cachedModuleFields as $fieldinfo) {
 					$fieldvalue = '';
@@ -863,7 +863,7 @@ var_dump($params);*/
 		return $this;
 	}
 		
-	function process_list_query($query, $row_offset, $limit = -1, $max_per_page = -1) {
+	function process_list_query($query, $row_offset = 0, $limit = -1, $max_per_page = -1) {
 		global $list_max_entries_per_page;
 		$this->log->debug("process_list_query: " . $query);
 		if (!empty($limit) && $limit != -1) {
@@ -1055,7 +1055,7 @@ var_dump($params);*/
 	 */
 	function get_full_list($order_by = "", $where = "") {
 		$this->log->debug("get_full_list:  order_by = '$order_by' and where = '$where'");
-		$query = $this->create_list_query($order_by, $where);
+		$query = $this->create_list_query($order_by, $where); //SIC inherited ?
 		return $this->process_full_list_query($query);
 	}
 
@@ -1943,7 +1943,7 @@ var_dump($params);*/
 	 * //ED151013
 	 * @param Array If set with an array, count related but does not execute transfer. Returns array of module
 	 */
-	function transferRelatedRecords($module, $transferEntityIds, $entityId, $countingOnly = false) {
+	function transferRelatedRecords($module, $transferEntityIds, $entityId, &$countingOnly = false) {
 		global $adb, $log;
 		$log->debug("Entering function transferRelatedRecords ($module, $transferEntityIds, $entityId)");
 		foreach ($transferEntityIds as $transferId) {
@@ -2721,7 +2721,7 @@ var_dump($params);*/
 	 * Function to Listview buttons
 	 * return array  $list_buttons - for module (eg: 'Accounts')
 	 */
-	function getListButtons($app_strings) {
+	function getListButtons($app_strings, $mod_strings = false) {
 		$list_buttons = Array();
 
 		if (isPermitted($currentModule, 'Delete', '') == 'yes')

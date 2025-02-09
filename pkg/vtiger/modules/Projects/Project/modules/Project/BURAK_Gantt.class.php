@@ -116,7 +116,7 @@ class BURAK_Gantt {
 	* Class constructor
 	*
 	*/
-	function BURAK_Gantt() {
+	function __construct() {
 		$this->__construct();
 	}
 	

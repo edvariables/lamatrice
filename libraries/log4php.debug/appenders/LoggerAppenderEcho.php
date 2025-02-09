@@ -55,7 +55,7 @@ class LoggerAppenderEcho extends LoggerAppenderSkeleton {
      *
      * @param string $name appender name
      */
-    function LoggerAppenderEcho($name)
+    function __construct($name)
     {
         $this->LoggerAppenderSkeleton($name);
     }

@@ -52,7 +52,7 @@ class LoggerRoot extends Logger {
      *
      * @param integer $level initial log level
      */
-    function LoggerRoot($level = null)
+    function __construct($level = null)
     {
         $this->Logger($this->name);
         if ($level == null)

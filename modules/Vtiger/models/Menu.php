@@ -17,9 +17,10 @@ class Vtiger_Menu_Model extends Vtiger_Module_Model {
      * Static Function to get all the accessible menu models with/without ordering them by sequence
      * @param <Boolean> $sequenced - true/false
      * @param <String> $roleid
+     * @param <Null> $_compatibility for Vtiger_Module_Model::getAll($presence = [], $restrictedModulesList = [], $roleid = null)
      * @return <Array> - List of Vtiger_Menu_Model instances
      */
-    public static function getAll($sequenced = false, $roleid = null) {
+    public static function getAll($sequenced = false, $roleid = null, $_compatibility = null) {
 		$currentUser = Users_Record_Model::getCurrentUserModel();
 		$userPrivModel = Users_Privileges_Model::getCurrentUserPrivilegesModel();
 		$restrictedModulesList = array('Emails', 'ProjectMilestone', 'ProjectTask', 'ModComments', 'Rss', 'Portal',

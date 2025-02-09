@@ -16,3 +16,5 @@
 /test
 
 **/*.php.bak
+**/*.css.bak
+**/*.js.bak

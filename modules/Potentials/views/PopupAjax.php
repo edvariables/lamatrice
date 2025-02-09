@@ -17,7 +17,7 @@ class Potentials_PopupAjax_View extends Potentials_Popup_View {
 		$this->exposeMethod('getPageCount');
 	}
 
-	public function preProcess(Vtiger_Request $request) {
+	public function preProcess(Vtiger_Request $request, $display = false) {
 		return true;
 	}
 
