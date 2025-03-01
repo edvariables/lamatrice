@@ -56,6 +56,8 @@ class Vtiger_AddressCheckAjax_View extends Vtiger_BasicAjax_View {
 
 		$tempFileName = $rootDirectory.$tmpDir . '/sna_' . $user->getId() . '.html';
 		$handle = fopen($tempFileName, "w");
+		if( ! $handle )
+			die( sprintf('%s : Impossible de créer le fichier %s.', __FUNCTION__, $tempFileName));
 		fwrite($handle, $data);
 		fclose($handle);
 

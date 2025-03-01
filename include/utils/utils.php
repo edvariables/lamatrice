@@ -1669,7 +1669,7 @@ function getValidDBInsertDateTimeValue($value) {
 		} catch (Exception $ex) {
 			return '';
 		}
-	} elseif(count($valueList == 1)) {
+	} elseif(count($valueList) == 1) {
 		return getValidDBInsertDateValue($value);
 	}
 }
@@ -2023,7 +2023,7 @@ function http_request(
     $ret = ''; 
     $verb = strtoupper($verb); 
     $cookie_str = ''; 
-    $getdata_str = count($getdata) ? '?' : ''; 
+    $getdata_str = $getdata && count($getdata) ? '?' : ''; 
     $postdata_str = ''; 
 
 	if($getdata)

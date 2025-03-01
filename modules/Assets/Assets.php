@@ -436,7 +436,7 @@ class Assets extends CRMEntity {
 	 * @param Array List of Entity Id's from which related records need to be transfered
 	 * @param Integer Id of the the Record to which the related records are to be moved
 	 */
-	function transferRelatedRecords($module, $transferEntityIds, $entityId) {
+	function transferRelatedRecords($module, $transferEntityIds, $entityId, &$countingOnly = false) {
 		global $adb,$log;
 		$log->debug("Entering function transferRelatedRecords ($module, $transferEntityIds, $entityId)");
 
@@ -464,7 +464,7 @@ class Assets extends CRMEntity {
 				}
 			}
 		}
-		parent::transferRelatedRecords($module, $transferEntityIds, $entityId);
+		parent::transferRelatedRecords($module, $transferEntityIds, $entityId, $countingOnly);
 		$log->debug("Exiting transferRelatedRecords...");
 	}
 }
