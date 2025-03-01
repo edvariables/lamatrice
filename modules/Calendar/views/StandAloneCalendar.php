@@ -36,9 +36,9 @@
 			$oneDayInterval = new DateInterval('P1D');
 			for($index = 0; $index < $nbResults; $index++){
 				$rawData = $adb->query_result_rowdata($result, $index);
-//var_dump($rawData);
+// var_dump($rawData);
 				$dStart = new DateTime($rawData['date_start']);
-				if(!$minDate) {
+				if( ! $minDate) {
 					$minDate = new DateTime();
 					$minDate->setDate($minDate->format('Y'), $minDate->format('n'), 1);
 					//Init 
