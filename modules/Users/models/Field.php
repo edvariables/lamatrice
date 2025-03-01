@@ -73,7 +73,7 @@ class Users_Field_Model extends Vtiger_Field_Model {
 	 * Function to get all the available picklist values for the current field
 	 * @return <Array> List of picklist values if the field is of type picklist or multipicklist, null otherwise.
 	 */
-	public function getPicklistValues() {
+	public function getPicklistValues( &$picklistvaluesdata = false ) {
 	    if($this->get('uitype') == 32) {
 		    return Vtiger_Language_Handler::getAllLanguages();
 	    }

@@ -1978,7 +1978,7 @@ class QueryGenerator {
 			&& !$this->isEnumerableType($type) //ED150904
 			) {
 				//var_dump($fieldName, $type, $value, $this->isStringType($type));
-				$stringConvert = function_exists(iconv) ? @iconv("UTF-8",$default_charset,$value)
+				$stringConvert = function_exists('iconv') ? @iconv("UTF-8",$default_charset,$value)
 						: $value;
 				if($stringConvert !== FALSE) { //ED150605 ne rien faire en cas d'erreur de traduction
 				   $value=trim($stringConvert);
