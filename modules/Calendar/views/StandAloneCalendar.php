@@ -83,7 +83,7 @@ class Calendar_StandAloneCalendar_View extends Vtiger_ListAjax_View {
 		return true;
 	}
 
-	function preProcess(Vtiger_Request $request) {
+	function preProcess(Vtiger_Request $request, $display = true) {
 		return true;
 	}
 
