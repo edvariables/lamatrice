@@ -58,6 +58,18 @@ $languageStrings = array(
 	'LBL_DAY4'                     => 'Jeudi'                    ,
 	'LBL_DAY5'                     => 'Vendredi'                      ,
 	'LBL_DAY6'                     => 'Samedi'                    ,
+	'LBL_MONTH1'                     => 'Janvier'                      ,
+	'LBL_MONTH2'                     => 'Février'                      ,
+	'LBL_MONTH3'                     => 'Mars'                      ,
+	'LBL_MONTH4'                     => 'Avril'                      ,
+	'LBL_MONTH5'                     => 'Mai'                      ,
+	'LBL_MONTH6'                     => 'Juin'                      ,
+	'LBL_MONTH7'                     => 'Juillet'                      ,
+	'LBL_MONTH8'                     => 'Août'                      ,
+	'LBL_MONTH9'                     => 'Septembre'                      ,
+	'LBL_MONTH10'                     => 'Octobre'                      ,
+	'LBL_MONTH11'                     => 'Novembre'                      ,
+	'LBL_MONTH12'                     => 'Décembre'                      ,
 	'first'                        => 'Premier'                       ,
 	'last'                         => 'Dernier'                        ,
 	'LBL_DAY_OF_THE_MONTH'         => 'jour du mois'            ,
@@ -82,8 +94,25 @@ $languageStrings = array(
         
         // Traductions manquantes
         // Copie de Events.php
-        'Held' => 'A eu lieu',
-        'Not Held' => 'N\'a pas eu lieu' , 
+		'Held' => 'A eu lieu',
+		'Not Held' => 'N\'a pas eu lieu' , 
+		'Hosting' => 'Hébergement',
+		'NoHosting' => 'Pas d\'hébergement',
+	
+	'LBL_IMPORT_RECORDS' => 'Importation de données',
+	'LBL_FROM_FILE' => 'Depuis un fichier', 
+	'LBL_FROM_URL' => 'Depuis une URL (Airbnb, ...)', 
+	'LBL_FINISH' => 'Terminer',
+	'LBL_RESULT' => 'Résultat',
+	'LBL_UNDO_LAST_IMPORT' => 'Annuler le dernier import',
+	'LBL_TOTAL_EVENTS_IMPORTED' => 'Evènements importés',
+	'LBL_TOTAL_EVENTS_UPDATED' => 'Evènements mis à jour',
+	'LBL_TOTAL_EVENTS_SKIPPED' => 'Evènements ignorés',
+	'LBL_TOTAL_EVENTS_DELETED' => 'Evènements supprimés',
+	'LBL_TOTAL_TASKS_IMPORTED' => 'Tâches importées',
+	'LBL_TOTAL_TASKS_UPDATED' => 'Tâches mises à jour',
+	'LBL_TOTAL_TASKS_SKIPPED' => 'Tâches ignorées',
+	'LBL_TOTAL_TASKS_DELETED' => 'Tâches supprimées',
 
 );
 $jsLanguageStrings = array(
