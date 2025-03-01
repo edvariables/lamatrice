@@ -17,7 +17,7 @@ class Users_DetailView_Model extends Vtiger_DetailView_Model {
 	 * @return <array> - array of link models in the format as below
 	 *                   array('linktype'=>list of link models);
 	 */
-	public function getDetailViewLinks($linkParams) {
+	public function getDetailViewLinks($linkParams, $countRelatedEntity = false) {
 		$currentUserModel = Users_Record_Model::getCurrentUserModel();
 		$recordModel = $this->getRecord();
 		$recordId = $recordModel->getId();
